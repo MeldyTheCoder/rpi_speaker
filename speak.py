@@ -41,16 +41,20 @@ class Speaker:
         self.__tone('e', time_play=1/2)
         self.__tone('r', time_play=1/3)
 
-    @thread.to_thread
     def sound(self, func):
         def wrapper(*args, **kwargs):
-            try:
-                func()
-                self.apply_sound()
-            except:
-                self.error_sound()
-            finally:
-                self.cancel_sound()
+            @thread.to_thread
+            def call():
+                try:
+                    func()
+                    self.apply_sound()
+                except:
+                    self.error_sound()
+                finally:
+                    self.cancel_sound()
+
+            return call()
+
         return wrapper
 
 
