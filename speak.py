@@ -29,21 +29,19 @@ class Speaker:
         time.sleep(time_play)
         p.stop()
 
-    @thread.to_thread
     def cancel_sound(self):
         self.__tone('w', time_play=1/3)
         self.__tone('q', time_play=1/3)
 
-    @thread.to_thread
     def error_sound(self):
         self.__tone('g', time_play=1/3)
         self.__tone('f', time_play=1/3)
 
-    @thread.to_thread
     def apply_sound(self):
         self.__tone('e', time_play=1/2)
         self.__tone('r', time_play=1/3)
 
+    @thread.to_thread
     def sound(self, func):
         def wrapper(*args, **kwargs):
             try:
