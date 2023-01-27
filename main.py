@@ -16,3 +16,4 @@ def task2():
 
 task1()
 task2()
+input('')
