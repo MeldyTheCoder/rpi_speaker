@@ -50,9 +50,6 @@ class Speaker:
                     self.apply_sound()
                 except:
                     self.error_sound()
-                finally:
-                    self.cancel_sound()
-
             return call()
 
         return wrapper
